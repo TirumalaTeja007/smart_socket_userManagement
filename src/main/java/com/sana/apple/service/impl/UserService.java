@@ -67,7 +67,12 @@ public class UserService implements IUserService {
 		if (mobileAlreadyExists(mobileNumber)) {
 			logger.error("MobileNumber already exists: " + mobileNumber);
 			throw new ResourceAlreadyInUseException("MobileNumber", "number", mobileNumber);
-		}else {
+		}if(emailAlreadyExists(email)) {
+			logger.error("Email already exists: " + email);
+			throw new ResourceAlreadyInUseException("Email", "number", email);
+		} else {
+			String str = "SS";
+			user.setUserName(str+"-"+generatePassword());
 			user.setCreatedTime(new Date());			user.setUpdatedTime(new Date());//			user.setPassword(generatePassword());			User newUser = userRepository.save(user);			logger.info("===== User saved successfully =====" + newUser);			return Optional.ofNullable(newUser);
 		}
 	}

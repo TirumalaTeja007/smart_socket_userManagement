@@ -139,7 +139,7 @@ public class UserController {
 				ApiResponse response =new ApiResponse("User authenticated successfully.", true);
 				response.setData(loggedInUser);
 				return ResponseEntity.ok(response);
-			}).orElseThrow(() -> new UserLoginException("Couldn't login user [" + user + "]"));
+			}).orElseThrow(() -> new UserLoginException("Invalid login credentials."));
 	}
 	
 	

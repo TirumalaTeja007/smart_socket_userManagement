@@ -18,12 +18,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	Optional<User> findByUserName(String username);
 
-	Optional<User> findByEmail(String username);
+	Optional<User> findByEmail(String email);
 	
 	@Query(value = "SELECT nextval('user_id_sequence')", nativeQuery = true)
     Long getNextUserId();
 
-
 	Optional<List<User>> findByStatus(StatusEnum status);
-
 }
